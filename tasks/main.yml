@@ -1,5 +1,5 @@
 ---
-# tasks file for oracle_java_11
+# tasks file for oracle_java
 
 #
 # Note that I am following the directions I was given by Matt
@@ -9,12 +9,12 @@
 # https://tecadmin.net/install-oracle-java-11-on-debian-9-stretch/
 #
 
-- name: Get the GPG key for the Oracle Java 11 PPA
+- name: Get the GPG key for the Oracle Java PPA
   apt_key:
     keyserver: keyserver.ubuntu.com
     id: EA8CACC073C3DB2A
 
-- name: Add the PPA that contains Oracle Java 11
+- name: Add the PPA that contains Oracle Java
   apt_repository:
     repo: deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main
 
@@ -25,7 +25,7 @@
     value: 'true'
     vtype: select
 
-- name: Install Oracle Java 11
+- name: Install Oracle Java
   package:
     name:
       - oracle-java11-installer
