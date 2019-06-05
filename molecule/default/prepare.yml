@@ -1,0 +1,8 @@
+---
+# gpg is installed anywhere we would be applying this Ansible role
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: Install gpg
+      package:
+        name: gpg
