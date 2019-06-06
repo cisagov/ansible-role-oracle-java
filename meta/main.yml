@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Shane Frasier
-  description: Install Oracle Java 11.
+  description: Install Oracle Java.
   company: CISA NCATS
   license: CC0
   min_ansible_version: 2.0
@@ -12,6 +12,5 @@ galaxy_info:
   galaxy_tags:
     - java
     - oracle
-    - 11
 
 dependencies: []
