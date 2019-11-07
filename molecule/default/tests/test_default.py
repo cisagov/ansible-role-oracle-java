@@ -11,7 +11,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 @pytest.mark.parametrize(
-    "pkg", ["oracle-java11-installer", "oracle-java11-set-default"]
+    "pkg", ["oracle-java11-installer-local", "oracle-java11-set-default-local"]
 )
 def test_packages(host, pkg):
     """Test that the expected packages were installed."""
