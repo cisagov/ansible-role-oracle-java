@@ -33,13 +33,13 @@
 
 - name: Copy the Oracle Java archive from our S3 bucket
   aws_s3:
-    bucket: oracle-java-archives
+    bucket: "{{ oracle_java_archive_bucket_name }}"
     object: "{{ oracle_java_archive_filename }}"
     dest: /tmp/{{ oracle_java_archive_filename }}
     mode: get
   delegate_to: localhost
-  # This task will run even if the local copy of the file already
-  # exists, so we need this
+  # This task will run even if a local copy of the file already
+  # exists, so we need this next line for idempotence
   changed_when: false
 
 - name: Copy the Oracle Java archive
