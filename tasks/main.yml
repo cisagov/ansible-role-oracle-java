@@ -37,6 +37,7 @@
     object: "{{ oracle_java_archive_filename }}"
     dest: /tmp/{{ oracle_java_archive_filename }}
     mode: get
+  become: no
   delegate_to: localhost
   # This task will run even if a local copy of the file already
   # exists, so we need this next line for idempotence
