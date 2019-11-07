@@ -78,9 +78,9 @@ can create and configure the Python virtual environment with these
 commands:
 
 ```console
-cd ansible-role-oracle-java-11
-pyenv virtualenv <python_version_to_use> ansible-role-oracle-java-11
-pyenv local ansible-role-oracle-java-11
+cd ansible-role-oracle-java
+pyenv virtualenv <python_version_to_use> ansible-role-oracle-java
+pyenv local ansible-role-oracle-java
 pip install -r requirements-dev.txt
 ```
 
