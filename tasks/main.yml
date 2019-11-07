@@ -25,8 +25,16 @@
     value: 'true'
     vtype: select
 
+- name: Copy over the Oracle Java archive
+  copy:
+    src: jdk-11.0.5_linux-x64_bin.tar.gz
+    # Note that the resiling slash here means that the directory will
+    # be created if it does not exist.  See here for details:
+    # https://docs.ansible.com/ansible/latest/modules/copy_module.html#parameters
+    dest: /var/cache/oracle-jdk11-installer-local/
+
 - name: Install Oracle Java
   package:
     name:
-      - oracle-java11-installer
-      - oracle-java11-set-default
+      - oracle-java11-installer-local
+      - oracle-java11-set-default-local
