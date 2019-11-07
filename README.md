@@ -1,6 +1,8 @@
 # ansible-role-oracle-java-11 #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-oracle-java/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-oracle-java/actions)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-oracle-java.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-oracle-java/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-oracle-java.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-oracle-java/context:python)
 
 An Ansible role for installing [Oracle Java
 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html).
