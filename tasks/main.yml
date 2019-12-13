@@ -1,0 +1,55 @@
+---
+# tasks file for oracle_java
+
+###
+# Note that I started out following the directions I was given by
+# [redacted] for installing Oracle Java 11 on Debian 9, which appear
+# to be identical to those found here:
+# https://tecadmin.net/install-oracle-java-11-on-debian-9-stretch/
+#
+# At some point, though, Oracle changed the download process such that
+# an account is now required.  That means that the machine where Java
+# is being deployed can no longer download the Oracle Java archive
+# itself without special credentials.  As a workaround, I am storing
+# the Oracle Java archives in a private AWS S3 bucket so it can be
+# downloaded.
+###
+
+- name: Get the GPG key for the Oracle Java PPA
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: EA8CACC073C3DB2A
+
+- name: Add the PPA that contains Oracle Java
+  apt_repository:
+    repo: deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main
+
+- name: Accept the Oracle license so the installer won't prompt at install time
+  debconf:
+    name: oracle-java11-installer
+    question: shared/accepted-oracle-license-v1-2
+    value: 'true'
+    vtype: select
+
+- name: Copy the Oracle Java archive from our S3 bucket
+  aws_s3:
+    bucket: "{{ oracle_java_archive_bucket_name }}"
+    object: "{{ oracle_java_archive_filename }}"
+    dest: /tmp/{{ oracle_java_archive_filename }}
+    mode: get
+  become: no
+  delegate_to: localhost
+  # This task will run even if a local copy of the file already
+  # exists, so we need this next line for idempotence
+  changed_when: false
+
+- name: Copy the Oracle Java archive
+  copy:
+    src: /tmp/{{ oracle_java_archive_filename }}
+    dest: /var/cache/oracle-jdk11-installer-local/
+
+- name: Install Oracle Java
+  package:
+    name:
+      - oracle-java11-installer-local
+      - oracle-java11-set-default-local
